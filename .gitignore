@@ -1,0 +1,31 @@
+# --- Gradle の一時ファイル・ビルド成果物 ---
+.gradle/
+build/
+
+# --- 開発環境 (IntelliJ IDEA) の設定ファイル ---
+.idea/
+*.iws
+*.iml
+*.ipr
+out/
+
+# --- 開発環境 (Eclipse) の設定ファイル ---
+.metadata/
+.classpath
+.project
+.settings/
+bin/
+
+# --- 開発環境 (VS Code) の設定ファイル ---
+.vscode/
+
+# --- 実行時のデータ (マイクラ起動時に生成されるワールドデータなど) ---
+run/
+runClient/
+runServer/
+runData/
+
+# --- ログファイルや一時ファイル ---
+*.log
+.DS_Store
+Thumbs.db
