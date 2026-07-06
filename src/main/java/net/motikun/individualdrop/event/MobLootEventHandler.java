@@ -6,6 +6,7 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.motikun.individualdrop.entity.IndividualItemEntity;
 import net.motikun.individualdrop.event.util.MobLootEventUtil;
 import net.motikun.individualdrop.register.ModDataComponents;
@@ -23,7 +24,6 @@ public class MobLootEventHandler {
     public static void onLivingDrops(LivingDropsEvent event) {
         if (event.getEntity() instanceof ServerPlayer) return;
         if (!(event.getEntity().level() instanceof ServerLevel level)) return;
-        if (event.getEntity() instanceof WitherBoss) return;
 
         event.setCanceled(true);
         event.getDrops().clear();
@@ -40,6 +40,10 @@ public class MobLootEventHandler {
 
             Collection<ItemStack> dropItems =
                     MobLootEventUtil.getMobLootTable(level, entity, source);
+
+            if (entity instanceof WitherBoss) {
+                dropItems.add(new ItemStack(Items.NETHER_STAR));
+            }
 
             for (ItemStack stack : dropItems) {
                 if (stack.isEmpty()) continue;
